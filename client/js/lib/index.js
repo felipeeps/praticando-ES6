@@ -34,4 +34,10 @@ document.querySelector('.form').addEventListener('submit', function(event) {
     //Inserindo a minha tbody os valores do form
     tbody.appendChild(tr);
 
+    //Zerando os campos após enviar
+    campos[0].value = "";
+    campos[1].value = "";
+    campos[2].value = "";
+    campos[0].focus = "";
+
 });
