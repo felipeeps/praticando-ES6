@@ -4,9 +4,11 @@ class Negociacao {
     //Definindo meu metodo construtor
     constructor(data, quantidade,valor) {
         //Associando a data com o Date
-        this._data = data;
+        this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
+        //Congelando meu objeto para evitar alterações de valores fora do Form
+        Object.freeze(this);
     }
 
     //Encapsulando os campos com a propriedade GET
@@ -15,7 +17,7 @@ class Negociacao {
     }
 
     get data() {
-        return this._data;
+        return new Date(this._data.getTime());
     }
     
     get quantidade() {
