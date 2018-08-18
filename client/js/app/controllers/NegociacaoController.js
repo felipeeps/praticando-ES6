@@ -11,6 +11,10 @@ class NegociacaoController {
         this._inputValor = $('#valor');    
         //Instanciando minha model ListaNegociacao
         this._listaNegociacoes = new ListaNegociacoes();
+        //Instanciando a minha View e buscando pela ID do meu html
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+
+        this._negociacoesView.update();
     }
 
     adiciona(event){
