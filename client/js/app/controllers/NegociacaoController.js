@@ -13,8 +13,8 @@ class NegociacaoController {
         this._listaNegociacoes = new ListaNegociacoes();
         //Instanciando a minha View e buscando pela ID do meu html
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
-
-        this._negociacoesView.update();
+        //Passando minha lista para meu update atualizar
+        this._negociacoesView.update(this._listaNegociacoes);
     }
 
     adiciona(event){
@@ -23,6 +23,9 @@ class NegociacaoController {
 
         //Criando minha negociação
         this._listaNegociacoes.adiciona(this._criaNegociacao());
+
+        //Pedindo para minha lista atualizar após a adição de novos itens
+        this._negociacoesView.update(this._listaNegociacoes);
 
         //Limpando meu formulário
         this._limpaFormulario();
