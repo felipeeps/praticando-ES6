@@ -1,9 +1,4 @@
-class NegociacoesView {
-
-    constructor(elemento) {
-
-        this._elemento = elemento;
-    }
+class NegociacoesView extends View {
 
     _template(model) {
         //Utilizando o template string para evitar concatenação das linhas
@@ -20,25 +15,24 @@ class NegociacoesView {
                 </tr>
             </thead>
             <tbody>
-                ${model.negociacoes.map(n =>{
-                    
-                    return `
-                    <tr>
-                        <td>${DateHelper.dataParaTexto(n.data)}</td>
-                        <td>${n.quantidade}</td>
-                        <td>${n.valor}</td>
-                        <td>${n.volume}</td>
-                    </tr>
-                    `
-                }).join('')}
+                ${model.negociacoes.map(n => `
+                        <tr>
+                            <td>${DateHelper.dataParaTexto(n.data)}</td>
+                            <td>${n.quantidade}</td>
+                            <td>${n.valor}</td>
+                            <td>${n.volume}</td>
+                        </tr>
+                    `).join('')}
             </tbody>
+
+            <tfoot>
+                <td colspan="3"></td>
+                <td>${ //Fazendo um total com REDUCE - Inicializando por zero o total - Usando Arrow Funcition
+                    model.negociacoes.reduce((total, n) => total + n.volume, 0.0)
+                }</td>
+            </tfoot>
      </table>
             `;
     }
 
-    //Realizando o update para carregar a tabela no meu template
-    update(model) {
-        //Converte as strings em elementos do DOM
-        this._elemento.innerHTML = this._template(model);
-  }
 }

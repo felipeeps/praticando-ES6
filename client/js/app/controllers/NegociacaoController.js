@@ -15,6 +15,10 @@ class NegociacaoController {
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
         //Passando minha lista para meu update atualizar
         this._negociacoesView.update(this._listaNegociacoes);
+        //Chamando a minha Mensagem
+        this._mensagem = new Mensagem();
+        this._mensagemView = new MensagemView($('#mensagemView'));
+        this._mensagemView.update(this._mensagem);
     }
 
     adiciona(event){
@@ -27,10 +31,11 @@ class NegociacaoController {
         //Pedindo para minha lista atualizar após a adição de novos itens
         this._negociacoesView.update(this._listaNegociacoes);
 
+        this._mensagem.texto = 'Negociação Adicionada';
+        this._mensagemView.update(this._mensagem);
+
         //Limpando meu formulário
         this._limpaFormulario();
-
-        console.log(this._listaNegociacoes.negociacoes);
     }
 
     _criaNegociacao(){
