@@ -1,6 +1,11 @@
 class NegociacoesView extends View {
 
-    _template(model) {
+    constructor(elemento){
+        //Usando a classe pai para associar
+        super(elemento);
+    }
+
+    template(model) {
         //Utilizando o template string para evitar concatenação das linhas
         //PErcorrendo a lista de negociações com os dados das negociações
         //Usando o join para retornar uma string concatenada

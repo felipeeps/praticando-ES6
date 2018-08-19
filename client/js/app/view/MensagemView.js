@@ -7,7 +7,7 @@ class MensagemView extends View {
     }
 
     //IF inline para evitar dem ostrar se estiver vazio
-    _template(model){
+    template(model){
         return model.texto ? `<p class="alert alert-info">${model.texto}</p>` : '<p></p>';
     }
 }
